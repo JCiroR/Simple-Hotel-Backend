@@ -22,6 +22,5 @@ export class CreateRoomInput {
   lastChanged?: Date;
 
   @Field(type => RoomState)
-  @IsEnum({ entity: RoomState })
   state: RoomState;
 }
