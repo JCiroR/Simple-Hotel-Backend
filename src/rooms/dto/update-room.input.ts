@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional } from 'class-validator';
 import { CreateRoomInput } from './create-room.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 

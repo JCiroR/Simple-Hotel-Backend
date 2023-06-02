@@ -4,10 +4,11 @@ import { RoomState } from '../enums/room-state.enum';
 
 @InputType()
 export class CreateRoomInput {
-  @Field()
+  @Field({ nullable: true })
+  @IsOptional()
   @IsString()
   @IsNotEmpty()
-  roomId: string;
+  roomId?: string;
 
   @Field({ nullable: true })
   @IsOptional()

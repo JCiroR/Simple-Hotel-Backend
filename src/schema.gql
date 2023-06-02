@@ -32,7 +32,7 @@ type Mutation {
 }
 
 input CreateRoomInput {
-  roomId: String!
+  roomId: String
   guestName: String
   lastChanged: DateTime
   state: RoomState!

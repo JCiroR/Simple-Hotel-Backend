@@ -1,17 +1,23 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { ObjectType, Field } from '@nestjs/graphql';
 import { RoomState } from '../enums/room-state.enum';
+import { Column, PrimaryGeneratedColumn, Entity } from 'typeorm';
 
+@Entity()
 @ObjectType({ description: 'hotel room'})
 export class Room {
+  @PrimaryGeneratedColumn("uuid")
   @Field()
   roomId: string;
 
+  @Column({ nullable: true})
   @Field({ nullable: true })
   guestName?: string;
 
+  @Column({ nullable: true})
   @Field({ nullable: true })
   lastChanged?: Date;
 
+  @Column({ enum: RoomState })
   @Field(type => RoomState)
   state: RoomState;
 }
