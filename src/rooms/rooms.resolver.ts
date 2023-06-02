@@ -19,8 +19,8 @@ export class RoomsResolver {
   }
 
   @Query(() => Room, { name: 'room' })
-  findOne(@Args('id', { type: () => String }) id: string) {
-    return this.roomsService.findOne(id);
+  findOne(@Args('roomId', { type: () => String }) roomId: string) {
+    return this.roomsService.findOne(roomId);
   }
 
   @Mutation(() => Room)
@@ -29,7 +29,7 @@ export class RoomsResolver {
   }
 
   @Mutation(() => Room)
-  removeRoom(@Args('id', { type: () => String }) id: string) {
-    return this.roomsService.remove(id);
+  removeRoom(@Args('roomId', { type: () => String }) roomId: string) {
+    return this.roomsService.remove(roomId);
   }
 }
