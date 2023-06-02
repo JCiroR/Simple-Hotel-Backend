@@ -19,17 +19,17 @@ export class RoomsResolver {
   }
 
   @Query(() => Room, { name: 'room' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
+  findOne(@Args('id', { type: () => String }) id: string) {
     return this.roomsService.findOne(id);
   }
 
   @Mutation(() => Room)
   updateRoom(@Args('updateRoomInput') updateRoomInput: UpdateRoomInput) {
-    return this.roomsService.update(updateRoomInput.id, updateRoomInput);
+    return this.roomsService.update(updateRoomInput.roomId, updateRoomInput);
   }
 
   @Mutation(() => Room)
-  removeRoom(@Args('id', { type: () => Int }) id: number) {
+  removeRoom(@Args('id', { type: () => String }) id: string) {
     return this.roomsService.remove(id);
   }
 }

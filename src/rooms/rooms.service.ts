@@ -12,15 +12,15 @@ export class RoomsService {
     return `This action returns all rooms`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} room`;
   }
 
-  update(id: number, updateRoomInput: UpdateRoomInput) {
+  update(id: string, updateRoomInput: UpdateRoomInput) {
     return `This action updates a #${id} room`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} room`;
   }
 }
