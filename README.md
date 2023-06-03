@@ -45,6 +45,17 @@ API is served on localhost:3000/graphql
       }
     }
 
+### Retrieve all rooms:
+
+    {
+      rooms {
+        roomId,
+        guestName,
+        lastChanged,
+        state
+      }
+    }
+
 ### Update Room:
 
     mutation {
