@@ -9,7 +9,7 @@ import { join } from 'path';
 import { Room } from './rooms/entities/room.entity';
 
 @Module({
-  imports: [  
+  imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
@@ -18,7 +18,8 @@ import { Room } from './rooms/entities/room.entity';
       type: 'sqlite',
       database: 'database.sqlite',
       entities: [Room],
-      synchronize: true, 
+      synchronize: true,
+      logging: true,
     }),
     RoomsModule,
   ],

@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { RoomsService } from './rooms.service';
 import { Room } from './entities/room.entity';
 import { CreateRoomInput } from './dto/create-room.input';
@@ -8,28 +8,41 @@ import { UpdateRoomInput } from './dto/update-room.input';
 export class RoomsResolver {
   constructor(private readonly roomsService: RoomsService) {}
 
-  @Mutation(() => Room)
-  createRoom(@Args('createRoomInput') createRoomInput: CreateRoomInput) {
-    return this.roomsService.create(createRoomInput);
+  @Mutation(() => Room, { nullable: true })
+  createRoom(
+    @Args('createRoomInput') createRoomInput: CreateRoomInput,
+  ): Promise<Room> {
+    return this.roomsService.create(createRoomInput).then(
+      res => {
+        console.error(res);
+        return res;
+      }
+    );
   }
 
   @Query(() => [Room], { name: 'rooms' })
-  findAll() {
+  findAll(): Promise<Room[]> {
     return this.roomsService.findAll();
   }
 
   @Query(() => Room, { name: 'room' })
-  findOne(@Args('roomId', { type: () => String }) roomId: string) {
+  findOne(
+    @Args('roomId', { type: () => String }) roomId: string,
+  ): Promise<Room> {
     return this.roomsService.findOne(roomId);
   }
 
-  @Mutation(() => Room)
-  updateRoom(@Args('updateRoomInput') updateRoomInput: UpdateRoomInput) {
+  @Mutation(() => Boolean)
+  updateRoom(
+    @Args('updateRoomInput') updateRoomInput: UpdateRoomInput,
+  ): Promise<boolean> {
     return this.roomsService.update(updateRoomInput.roomId, updateRoomInput);
   }
 
-  @Mutation(() => Room)
-  removeRoom(@Args('roomId', { type: () => String }) roomId: string) {
+  @Mutation(() => Boolean)
+  removeRoom(
+    @Args('roomId', { type: () => String }) roomId: string,
+  ): Promise<boolean> {
     return this.roomsService.remove(roomId);
   }
 }

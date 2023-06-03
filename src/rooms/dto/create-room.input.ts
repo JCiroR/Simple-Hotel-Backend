@@ -1,5 +1,5 @@
-import { InputType, Int, Field } from '@nestjs/graphql';
-import { IsDate, IsEnum, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { InputType, Field } from '@nestjs/graphql';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { RoomState } from '../enums/room-state.enum';
 
 @InputType()
@@ -16,11 +16,6 @@ export class CreateRoomInput {
   @IsNotEmpty()
   guestName?: string;
 
-  @Field({ nullable: true })
-  @IsOptional()
-  @IsDate()
-  lastChanged?: Date;
-
-  @Field(type => RoomState)
+  @Field(() => RoomState)
   state: RoomState;
 }

@@ -1,10 +1,10 @@
-import { registerEnumType } from '@nestjs/graphql'
+import { registerEnumType } from '@nestjs/graphql';
 
 export enum RoomState {
-    OCCUPIED='OCCUPIED',
-    FREE='FREE',
+  OCCUPIED = 'OCCUPIED',
+  FREE = 'FREE',
 }
 
 registerEnumType(RoomState, {
-    name: 'RoomState',
+  name: 'RoomState',
 });
