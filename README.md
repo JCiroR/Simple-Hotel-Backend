@@ -45,7 +45,7 @@ API is served on localhost:3000/graphql
       }
     }
 
-### Retrieve all rooms:
+### Query all rooms:
 
     {
       rooms {
